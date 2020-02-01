@@ -13,7 +13,7 @@ import (
 	"gopkg.in/mgo.v2/bson"
 
 	"github.com/henrylee2cn/erpc/v6"
-	"github.com/xiaoenai/tp-micro/v6/model/redis"
+	"github.com/chiachan163/cc-orm/v1/model/redis"
 )
 
 // GO 1.9 alias
