@@ -19,7 +19,7 @@ import (
 	"strconv"
 	"unicode"
 
-	"github.com/xiaoenai/tp-micro/model/sqlx/reflectx"
+	"github.com/xiaoenai/tp-micro/v6/model/sqlx/reflectx"
 )
 
 // NamedStmt is a prepared statement that executes named queries.  Prepare it
@@ -152,7 +152,7 @@ func bindAnyArgs(names []string, arg interface{}, m *reflectx.Mapper) ([]interfa
 }
 
 // private interface to generate a list of interfaces from a given struct
-// type, given a list of names to pull out of the struct.  Used by public
+// type, given a list of names to call out of the struct.  Used by public
 // BindStruct interface.
 func bindArgs(names []string, arg interface{}, m *reflectx.Mapper) ([]interface{}, error) {
 	arglist := make([]interface{}, 0, len(names))
