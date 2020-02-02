@@ -10,8 +10,8 @@ import (
     "testing"
     "time"
 
-	"github.com/chiachan163/cc-orm/v1/model/mysql"
-    "github.com/chiachan163/cc-orm/v1/model/redis"
+	"github.com/chiachan163/cc-orm/model/mysql"
+    "github.com/chiachan163/cc-orm/model/redis"
 )
 
 type testTable struct {

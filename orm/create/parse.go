@@ -12,7 +12,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/chiachan163/cc-orm/v1/orm/create/structtag"
+	"github.com/chiachan163/cc-orm/orm/create/structtag"
 
 	"github.com/henrylee2cn/erpc/v6"
 	"github.com/henrylee2cn/goutil"
@@ -101,6 +101,9 @@ type (
 
 func newTplInfo(tplBytes []byte) *tplInfo {
 	fset := token.NewFileSet()
+	//erpc.Debugf("tplBytes: %+v", string(tplBytes))
+	//erpc.Debugf("fset: %+v", fset)
+	//erpc.Debugf("parser.ParseComments: %+v", parser.ParseComments)
 	file, err := parser.ParseFile(fset, "", tplBytes, parser.ParseComments)
 	if err != nil {
 		erpc.Fatalf("[micro] %v", err)
@@ -379,7 +382,7 @@ func (t *tplInfo) initModelStructs() {
 			s.initModel()
 		}
 		var hasMongo bool
-		const mongoImp = `"github.com/chiachan163/cc-orm/v1/model/mongo"`
+		const mongoImp = `"github.com/chiachan163/cc-orm/model/mongo"`
 		for _, imp := range t.typeImports {
 			if imp == mongoImp {
 				hasMongo = true

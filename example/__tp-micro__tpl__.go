@@ -1,6 +1,6 @@
 package __TPL__
 
-import "github.com/chiachan163/cc-orm/v1/model/mongo"
+import "github.com/chiachan163/cc-orm/model/mongo"
 
 // __MYSQL_MODEL__ create mysql model
 type __MYSQL_MODEL__ struct {

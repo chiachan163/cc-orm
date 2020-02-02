@@ -6,8 +6,6 @@ import (
 	"path/filepath"
 	"runtime"
 	"strings"
-
-	"github.com/henrylee2cn/erpc/v6"
 )
 
 // projInfo current project information
@@ -21,18 +19,18 @@ func Init(appPath string) (err error) {
 		return errors.New("project(<app_path, a>) path can not be empty!")
 	}
 	projInfo.absPath = strings.TrimSpace(appPath)
-	erpc.Debugf("1:%s", projInfo.absPath)
+	//erpc.Debugf("1:%s", projInfo.absPath)
 	projInfo.absPath, err = filepath.Abs(projInfo.absPath)
-	erpc.Debugf("2:%s", projInfo.absPath)
+	//erpc.Debugf("2:%s", projInfo.absPath)
 	if err != nil {
 		return errors.New("get absolute project path failed: %s!" + err.Error())
 	}
 	const SRC = "/src/"
 	projInfo.absPath = strings.Replace(projInfo.absPath, `\`, `/`, -1)
-	erpc.Debugf("3:%s", projInfo.absPath)
+	//erpc.Debugf("3:%s", projInfo.absPath)
 
 	projInfo.absPath = strings.TrimRight(projInfo.absPath, "/")
-	erpc.Debugf("4:%s", projInfo.absPath)
+	//erpc.Debugf("4:%s", projInfo.absPath)
 
 	srcIdx := strings.Index(projInfo.absPath, SRC)
 	if srcIdx == -1 {

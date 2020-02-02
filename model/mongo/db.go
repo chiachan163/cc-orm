@@ -12,8 +12,8 @@ import (
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 
+	"github.com/chiachan163/cc-orm/model/redis"
 	"github.com/henrylee2cn/erpc/v6"
-	"github.com/chiachan163/cc-orm/v1/model/redis"
 )
 
 // GO 1.9 alias

@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/chiachan163/cc-orm/v1/orm/create"
-	"github.com/chiachan163/cc-orm/v1/orm/info"
-	"github.com/urfave/cli/v2"
 	"os"
+
+	"github.com/chiachan163/cc-orm/orm/create"
+	"github.com/chiachan163/cc-orm/orm/info"
+	"github.com/urfave/cli/v2"
 )
 
 func main() {
@@ -25,9 +26,9 @@ func main() {
 		Usage: "hello world！",
 		Flags: []cli.Flag{
 			&cli.StringFlag{
-				Name:        "s",
-				Value:       "world",
-				Usage:       "Say hello",
+				Name:  "s",
+				Value: "world",
+				Usage: "Say hello",
 			},
 		},
 		Action: func(c *cli.Context) error {
@@ -42,7 +43,7 @@ func main() {
 
 	// 创建model文件
 	newCom := &cli.Command{
-		Name: "gen",
+		Name:  "gen",
 		Usage: "create model file",
 		Flags: []cli.Flag{
 			&cli.StringFlag{
@@ -60,14 +61,14 @@ func main() {
 				Usage: "Rebuild the README.md",
 			},
 		},
-		Before:initProject,
+		Before: initProject,
 		Action: func(c *cli.Context) error {
-			create.CreateModel(c.Bool("force"),c.Bool("newdoc"))
+			create.CreateModel(c.Bool("force"), c.Bool("newdoc"))
 			return nil
 		},
 	}
 
-	app.Commands = []*cli.Command{newCom,newHello}
+	app.Commands = []*cli.Command{newCom, newHello}
 	app.Run(os.Args)
 }
 

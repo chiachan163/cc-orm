@@ -5,11 +5,11 @@ import (
 	"testing"
 	"time"
 
+	"github.com/chiachan163/cc-orm/model/mysql"
+	"github.com/chiachan163/cc-orm/model/redis"
+	"github.com/chiachan163/cc-orm/model/sqlx"
+	"github.com/chiachan163/cc-orm/model/sqlx/reflectx"
 	"github.com/henrylee2cn/goutil"
-	"github.com/chiachan163/cc-orm/v1/model/mysql"
-	"github.com/chiachan163/cc-orm/v1/model/redis"
-	"github.com/chiachan163/cc-orm/v1/model/sqlx"
-	"github.com/chiachan163/cc-orm/v1/model/sqlx/reflectx"
 )
 
 type testTable struct {

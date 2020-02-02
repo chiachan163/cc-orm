@@ -2,7 +2,7 @@ package create
 
 const __tpl__ = `package __TPL__
 
-"github.com/chiachan163/cc-orm/v1/model/mongo"
+"github.com/chiachan163/cc-orm/model/mongo"
 
 // __MYSQL_MODEL__ create mysql model
 type __MYSQL_MODEL__ struct {
@@ -47,24 +47,6 @@ ${readme}
 `
 
 var tplFiles = map[string]string{
-	"main.go": `package main
-
-import (
-	micro "github.com/chiachan163/cc-orm/v1"
-	"github.com/chiachan163/cc-orm/v1/discovery"
-
-	"${import_prefix}/api"
-)
-
-func main() {
-	srv := micro.NewServer(
-		cfg.Srv,
-		discovery.ServicePlugin(cfg.Srv.InnerIpPort(), cfg.Etcd),
-	)
-	api.Route("/${PROJ_NAME}", srv.Router())
-	srv.ListenAndServe()
-}
-`,
 	"config.go": `package main
 
 import (
@@ -73,11 +55,11 @@ import (
 	"github.com/henrylee2cn/cfgo"
 	"github.com/henrylee2cn/goutil"
 	"github.com/henrylee2cn/erpc/v6"
-	micro "github.com/chiachan163/cc-orm/v1"
-	"github.com/chiachan163/cc-orm/v1/model/etcd"
-	"github.com/chiachan163/cc-orm/v1/model/mongo"
-	"github.com/chiachan163/cc-orm/v1/model/mysql"
-	"github.com/chiachan163/cc-orm/v1/model/redis"
+	micro "github.com/chiachan163/cc-orm"
+	"github.com/chiachan163/cc-orm/model/etcd"
+	"github.com/chiachan163/cc-orm/model/mongo"
+	"github.com/chiachan163/cc-orm/model/mysql"
+	"github.com/chiachan163/cc-orm/model/redis"
 
 	"${import_prefix}/logic/model"
 )
@@ -151,9 +133,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/chiachan163/cc-orm/v1/model/mongo"
-	"github.com/chiachan163/cc-orm/v1/model/mysql"
-	"github.com/chiachan163/cc-orm/v1/model/redis"
+	"github.com/chiachan163/cc-orm/model/mongo"
+	"github.com/chiachan163/cc-orm/model/mysql"
+	"github.com/chiachan163/cc-orm/model/redis"
 )
 
 // mysqlHandler preset mysql DB handler
@@ -251,115 +233,6 @@ import (${import_list}
 )
 ${type_define_list}
 `,
-
-	"logic/tmp_code.gen.go": `package logic
-import (
-	"github.com/henrylee2cn/erpc/v6"
-
-	"${import_prefix}/args"
-	// "${import_prefix}/logic/model"
-	// "${import_prefix}/errs"
-)
-${logic_api_define}
-`,
-
-	"api/pull_handler.gen.go": `package api
-import (
-    "github.com/henrylee2cn/erpc/v6"
-
-    "${import_prefix}/logic"
-    "${import_prefix}/args"
-)
-${handler_api_define}
-`,
-
-	"api/push_handler.gen.go": `package api
-import (
-    "github.com/henrylee2cn/erpc/v6"
-
-    "${import_prefix}/logic"
-    "${import_prefix}/args"
-)
-${handler_api_define}
-`,
-
-	"api/router.gen.go": `
-package api
-import (
-    "github.com/henrylee2cn/erpc/v6"
-)
-// Route registers handlers to router.
-func Route(_root string, _router *erpc.Router) {
-    // root router group
-    _group := _router.SubRoute(_root)
-    
-    // custom router
-    customRoute(_group.ToRouter())
-   
-    // automatically generated router
-    ${register_router_list}}
-`,
-
-	"sdk/rpc.gen.go": `package sdk
-import (
-	"fmt"
-
-	micro "github.com/chiachan163/cc-orm/v1"
-	"github.com/henrylee2cn/erpc/v6"
-    "github.com/chiachan163/cc-orm/v1/discovery"
-	"github.com/chiachan163/cc-orm/v1/model/etcd"
-
-	"${import_prefix}/args"
-)
-
-var _ = fmt.Sprintf
-var client *micro.Client
-// Init initializes client with configs.
-func Init(cliConfig micro.CliConfig, etcdConfing etcd.EasyConfig) {
-	client = micro.NewClient(
-		cliConfig,
-		discovery.NewLinker(etcdConfing),
-	)
-}
-// InitWithClient initializes client with specified object.
-func InitWithClient(cli *micro.Client) {
-	client = cli
-}
-${rpc_pull_define}
-`,
-
-	"sdk/rpc.gen_test.go": `package sdk_test
-import (
-	"encoding/json"
-	"fmt"
-
-	micro "github.com/chiachan163/cc-orm/v1"
-	"github.com/henrylee2cn/erpc/v6"
-	"github.com/chiachan163/cc-orm/v1/model/etcd"
-
-	"${import_prefix}/args"
-	"${import_prefix}/sdk"
-)
-
-func init(){
-	sdk.Init(
-		micro.CliConfig{
-			Failover:        3,
-			HeartbeatSecond: 4,
-		},
-		etcd.EasyConfig{
-			Endpoints: []string{"http://127.0.0.1:2379"},
-		},
-	)
-}
-
-func toJsonBytes(i interface{}) []byte {
-	b, _ := json.MarshalIndent(i, "", "  ")
-	return b
-}
-
-${rpc_pull_test_define}
-`,
 }
 
 const mysqlModelTpl = `package model
@@ -370,8 +243,8 @@ import (
 
 	"github.com/henrylee2cn/erpc/v6"
 	"github.com/henrylee2cn/goutil/coarsetime"
-	"github.com/chiachan163/cc-orm/v1/model/mysql"
-	"github.com/chiachan163/cc-orm/v1/model/sqlx"
+	"github.com/chiachan163/cc-orm/model/mysql"
+	"github.com/chiachan163/cc-orm/model/sqlx"
 
 	"${import_prefix}/args"
 )
@@ -747,7 +620,7 @@ import (
 	"unsafe"
 
 	"github.com/henrylee2cn/goutil/coarsetime"
-	"github.com/chiachan163/cc-orm/v1/model/mongo"
+	"github.com/chiachan163/cc-orm/model/mongo"
 	"github.com/henrylee2cn/erpc/v6"
 
 	"${import_prefix}/args"

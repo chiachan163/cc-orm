@@ -1,4 +1,4 @@
-module github.com/chiachan163/cc-orm/v1
+module github.com/chiachan163/cc-orm
 
 go 1.13
 

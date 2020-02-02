@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/chiachan163/cc-orm/v1/orm/info"
+	"github.com/chiachan163/cc-orm/orm/info"
 )
 
 // RestoreAsset restores an asset under the given directory

@@ -5,11 +5,11 @@ import (
 	"os"
 	"strings"
 
-	"github.com/chiachan163/cc-orm/v1/orm/create/tpl"
+	"github.com/chiachan163/cc-orm/orm/create/tpl"
 
 	"github.com/henrylee2cn/goutil"
 
-	"github.com/chiachan163/cc-orm/v1/orm/info"
+	"github.com/chiachan163/cc-orm/orm/info"
 	"github.com/henrylee2cn/erpc/v6"
 )
 

@@ -12,7 +12,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/chiachan163/cc-orm/v1/model/sqlx/reflectx"
+	"github.com/chiachan163/cc-orm/model/sqlx/reflectx"
 )
 
 // Although the NameMapper is convenient, in practice it should not

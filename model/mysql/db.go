@@ -10,12 +10,12 @@ import (
 	"strings"
 	"time"
 
+	"github.com/chiachan163/cc-orm/model/redis"
+	"github.com/chiachan163/cc-orm/model/sqlx"
+	"github.com/chiachan163/cc-orm/model/sqlx/reflectx"
+	"github.com/henrylee2cn/erpc/v6"
 	"github.com/henrylee2cn/goutil"
 	"github.com/henrylee2cn/goutil/errors"
-	"github.com/henrylee2cn/erpc/v6"
-	"github.com/chiachan163/cc-orm/v1/model/redis"
-	"github.com/chiachan163/cc-orm/v1/model/sqlx"
-	"github.com/chiachan163/cc-orm/v1/model/sqlx/reflectx"
 )
 
 // DB is a wrapper around sqlx.DB and redis.Client.

@@ -13,7 +13,7 @@ import (
 	"strings"
 	"unsafe"
 
-	"github.com/chiachan163/cc-orm/v1/orm/info"
+	"github.com/chiachan163/cc-orm/orm/info"
 
 	"github.com/henrylee2cn/erpc/v6"
 	"github.com/henrylee2cn/goutil"
@@ -54,6 +54,7 @@ func NewProject(src []byte) *Project {
 	p.ImprotPrefix = info.ProjPath()
 	p.codeFiles = make(map[string]string)
 	for k, v := range tplFiles {
+		//erpc.Debugf("file k: %s", k)
 		p.codeFiles[k] = v
 	}
 	for k := range p.codeFiles {

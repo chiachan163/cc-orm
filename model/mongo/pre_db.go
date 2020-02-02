@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/chiachan163/cc-orm/v1/model/redis"
+	"github.com/chiachan163/cc-orm/model/redis"
 	"gopkg.in/mgo.v2"
 )
 
