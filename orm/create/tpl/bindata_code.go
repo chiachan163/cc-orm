@@ -453,9 +453,9 @@ var _bintree = &bintree{nil, map[string]*bintree{
 	//	"router.go":  &bintree{apiRouterGo, map[string]*bintree{}},
 	//}},
 	"args": &bintree{nil, map[string]*bintree{
-		"const.go": &bintree{argsConstGo, map[string]*bintree{}},
-		"type.go":  &bintree{argsTypeGo, map[string]*bintree{}},
-		"var.go":   &bintree{argsVarGo, map[string]*bintree{}},
+		//"const.go": &bintree{argsConstGo, map[string]*bintree{}},
+		"type.go": &bintree{argsTypeGo, map[string]*bintree{}},
+		//"var.go":  &bintree{argsVarGo, map[string]*bintree{}},
 	}},
 	//"doc": &bintree{nil, map[string]*bintree{
 	//	"APIDoc.md":    &bintree{docApidocMd, map[string]*bintree{}},

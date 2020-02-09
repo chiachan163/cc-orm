@@ -131,7 +131,7 @@ func (p *Project) Generator(force, newdoc bool) {
 // generate all codes
 func (p *Project) gen() {
 	//p.genMainFile()
-	p.genConstFile()
+	//p.genConstFile()
 	p.genTypeFile()
 	//p.genRouterFile()
 	//p.genHandlerFile()

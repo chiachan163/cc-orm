@@ -223,11 +223,6 @@ func insertZeroDeletedTsField(whereCond string) string {
 	return whereCond[:i] + " AND ` + "`" + `deleted_ts` + "`" + `=0 " + whereCond[i:]
 }
 `,
-
-	"args/const.gen.go": `package args
-${const_list}
-`,
-
 	"args/type.gen.go": `package args
 import (${import_list}
 )
