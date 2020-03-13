@@ -18,20 +18,12 @@ type __MONGO_MODEL__ struct {
 type User struct {
 	Id   int64  ` + "`key:\"pri\"`" + `
 	Name string ` + "`key:\"uni\"`" + `
-	Age  int32 ` + "json:\"age\"`" + `
-	CreatedAt int64 ` + "json:\"created_at\"`" + `
-	UpdatedAt int64 ` + "json:\"updated_at\"`" + `
-	DeletedTs int64 ` + "json:\"deleted_ts\"`" + `
+	Age  int32 
 }
 
 type Meta struct {
-	Id int64 ` + "`key:\"pri\" bson:\"_id\"`" + `
-	uid int64 ` + "`key:\"uni\" bson:\"couple_id\"`" + `
-	Hobby []string ` + "bson:\"hobby\"`" + `
-	Tags  []string ` + "bson:\"tags\"`" + `
-	CreatedAt int64 ` + "bson:\"created_at\"`" + `
-	UpdatedAt int64 ` + "bson:\"updated_at\"`" + `
-	DeletedTs int64 ` + "bson:\"deleted_ts\"`" + `
+	Hobby []string
+	Tags  []string
 }
 `
 
