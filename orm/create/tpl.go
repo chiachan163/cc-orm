@@ -44,22 +44,16 @@ var tplFiles = map[string]string{
 import (
 	"time"
 	
-	"github.com/henrylee2cn/cfgo"
-	"github.com/henrylee2cn/goutil"
-	"github.com/henrylee2cn/erpc/v6"
-	micro "github.com/chiachan163/cc-orm"
-	"github.com/chiachan163/cc-orm/model/etcd"
 	"github.com/chiachan163/cc-orm/model/mongo"
 	"github.com/chiachan163/cc-orm/model/mysql"
 	"github.com/chiachan163/cc-orm/model/redis"
-
+	"github.com/henrylee2cn/cfgo"
+	"github.com/henrylee2cn/erpc/v6"
+	"github.com/henrylee2cn/goutil"
 	"${import_prefix}/logic/model"
 )
 
 type config struct {
-	Srv      micro.SrvConfig ` + "`yaml:\"srv\"`" + `
-	Cli      micro.CliConfig ` + "`yaml:\"cli\"`" + `
-	Etcd     etcd.EasyConfig ` + "`yaml:\"etcd\"`" + `
 	Mysql    mysql.Config    ` + "`yaml:\"mysql\"`" + `
 	Mongo    mongo.Config    ` + "`yaml:\"mongo\"`" + `
 	Redis    redis.Config    ` + "`yaml:\"redis\"`" + `
@@ -98,16 +92,6 @@ func (c *config) Reload(bind cfgo.BindFunc) error {
 }
 
 var cfg = &config{
-	Srv: micro.SrvConfig{
-		ListenAddress:     ":0",
-		EnableHeartbeat:   true,
-		PrintDetail:       true,
-		CountTime:         true,
-		SlowCometDuration: time.Millisecond * 500,
-	},
-	Etcd: etcd.EasyConfig{
-		Endpoints: []string{"http://127.0.0.1:2379"},
-	},
 	Redis:    *redis.NewConfig(),
 	CacheExpire: time.Hour*24,
 	LogLevel: "TRACE",
