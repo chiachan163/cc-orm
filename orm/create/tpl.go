@@ -2,7 +2,7 @@ package create
 
 const __tpl__ = `package __TPL__
 
-"github.com/chiachan163/cc-orm/model/mongo"
+import "github.com/chiachan163/cc-orm/model/mongo"
 
 // __MYSQL_MODEL__ create mysql model
 type __MYSQL_MODEL__ struct {
@@ -25,7 +25,7 @@ type User struct {
 }
 
 type Meta struct {
-	Id mongo.ObjectId ` + "`key:\"pri\" bson:\"_id\"`" + `
+	Id int64 ` + "`key:\"pri\" bson:\"_id\"`" + `
 	uid int64 ` + "`key:\"uni\" bson:\"couple_id\"`" + `
 	Hobby []string ` + "bson:\"hobby\"`" + `
 	Tags  []string ` + "bson:\"tags\"`" + `
